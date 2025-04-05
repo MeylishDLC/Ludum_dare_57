@@ -8,7 +8,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Caves
   - Water
   - UI
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: CavesFront
     uniqueID: 134649017
+    locked: 0
+  - name: Rope
+    uniqueID: 3739120639
     locked: 0
   - name: Player
     uniqueID: 3400112815
