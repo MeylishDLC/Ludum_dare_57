@@ -1,3 +1,4 @@
+using Core;
 using UnityEngine;
 using Zenject;
 
@@ -7,15 +8,15 @@ namespace Installers
     {
         [SerializeField] private SceneContext sceneContext;
         [SerializeField] private Camera mainCamera;
+        [SerializeField] private PlayerController player;
         public override void InstallBindings()
         {
-            //BindContainer();
             BindCamera();
+            BindPlayer();
         }
-
-        private void BindContainer()
+        private void BindPlayer()
         {
-            Container.Bind<SceneContext>().FromInstance(sceneContext);
+            Container.Bind<PlayerController>().FromInstance(player).AsSingle();
         }
         private void BindCamera()
         {
