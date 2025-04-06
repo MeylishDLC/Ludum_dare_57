@@ -11,9 +11,9 @@ TagManager:
   - Caves
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Ground
+  - Rocks
+  - Player
   - 
   - 
   - 
@@ -55,6 +55,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3400112815
+    locked: 0
+  - name: Rocks
+    uniqueID: 2687530115
     locked: 0
   - name: Front
     uniqueID: 1402061181
