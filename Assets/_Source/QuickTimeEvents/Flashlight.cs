@@ -16,6 +16,10 @@ namespace QuickTimeEvents
 
         [SerializeField] private float minBreakTime = 5f;
         [SerializeField] private float maxBreakTime = 15f;
+        
+        [Header("Flickering")]
+        [SerializeField] private float flickers = 3;
+        [SerializeField] private float flickerInterval = 0.2f;
 
         private QTEManager _qteManager;
         private CancellationToken _ctOnDestroy;
@@ -48,7 +52,19 @@ namespace QuickTimeEvents
         }
         private void OnQTESuccess()
         {
+            OnQTESuccessAsync(_ctOnDestroy).Forget();
+        }
+        private async UniTask OnQTESuccessAsync(CancellationToken token)
+        {
+            for (int i = 0; i < flickers; i++)
+            {
+                flashlight.enabled = true;
+                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
+                flashlight.enabled = false;
+                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
+            }
             isWorking = true;
+            flashlight.enabled = true;
         }
     }
 }

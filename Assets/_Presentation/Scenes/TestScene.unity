@@ -27176,6 +27176,8 @@ MonoBehaviour:
   flashlight: {fileID: 1358365541}
   minBreakTime: 5
   maxBreakTime: 15
+  flickers: 2
+  flickerInterval: 0.05
 --- !u!1 &2078480861
 GameObject:
   m_ObjectHideFlags: 0
