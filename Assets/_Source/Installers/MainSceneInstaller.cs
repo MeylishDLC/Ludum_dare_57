@@ -1,5 +1,6 @@
 using Core;
 using QuickTimeEvents;
+using Rocks;
 using UnityEngine;
 using Zenject;
 
@@ -11,11 +12,16 @@ namespace Installers
         [SerializeField] private Camera mainCamera;
         [SerializeField] private PlayerController player;
         [SerializeField] private QTEManager qteManager;
+        [SerializeField] private RockUtilityConfig rockUtilityConfig;
+        
+        private SceneController _sceneController;
         public override void InstallBindings()
         {
             BindCamera();
             BindPlayer();
             BindQTEManager();
+            BindSceneController();
+            BindRockSpawnUtility();
         }
         private void BindPlayer()
         {
@@ -29,6 +35,16 @@ namespace Installers
         {
             Container.Bind<QTEManager>().FromInstance(qteManager).AsSingle();
         }
-      
+        private void BindSceneController()
+        {
+            _sceneController = new SceneController();
+            Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
+        }
+
+        private void BindRockSpawnUtility()
+        {
+            var utility = new RockSpawnUtility(rockUtilityConfig);
+            Container.Bind<RockSpawnUtility>().FromInstance(utility).AsSingle();
+        }
     }
 }
