@@ -11,7 +11,6 @@ namespace Installers
         [SerializeField] private SceneContext sceneContext;
         [SerializeField] private Camera mainCamera;
         [SerializeField] private PlayerController player;
-        [SerializeField] private QTEManager qteManager;
         [SerializeField] private RockUtilityConfig rockUtilityConfig;
         
         private SceneController _sceneController;
@@ -19,7 +18,6 @@ namespace Installers
         {
             BindCamera();
             BindPlayer();
-            BindQTEManager();
             BindSceneController();
             BindRockSpawnUtility();
         }
@@ -30,10 +28,6 @@ namespace Installers
         private void BindCamera()
         {
             Container.Bind<Camera>().FromInstance(mainCamera).AsSingle();
-        }
-        private void BindQTEManager()
-        {
-            Container.Bind<QTEManager>().FromInstance(qteManager).AsSingle();
         }
         private void BindSceneController()
         {

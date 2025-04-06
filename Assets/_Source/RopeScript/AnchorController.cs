@@ -4,6 +4,8 @@ namespace RopeScript
 {
     public class AnchorController : MonoBehaviour
     {
+        public bool CanMoveDown { get; set; } = true;
+        
         [SerializeField] private Transform ropeAnchor;
         [SerializeField] private float moveStep = 0.1f;
         [SerializeField] private float holdSpeed = 0.05f;
@@ -17,7 +19,15 @@ namespace RopeScript
             {
                 return;
             }
+            if (!CanMoveDown)
+            {
+                return;
+            }
+            HandleMovementDown();
+        }
 
+        private void HandleMovementDown()
+        {
             var position = ropeAnchor.position;
 
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))

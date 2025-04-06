@@ -1,48 +1,37 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
+using Core;
 using Cysharp.Threading.Tasks;
+using RopeScript;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.Serialization;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace QuickTimeEvents
 {
-    public class Flashlight : BaseQte
+    public class Harpoon: BaseQte
     {
         public override event Action<BaseQte, Action> OnTryStartQte;
-        
+
         [SerializeField] private float delayBeforeEvent;
         [SerializeField] private float minBreakTime = 5f;
         [SerializeField] private float maxBreakTime = 15f;
-        
-        [Header("Light Settings")]
-        [SerializeField] private Light2D flashlight;
-        [SerializeField] private Light2D playerLight;
-        [SerializeField] private float playerLightIntensityOnOff;
-        
-        [Header("Flickering")]
-        [SerializeField] private float flickers = 3;
-        [SerializeField] private float flickerInterval = 0.2f;
+        [SerializeField] private AnchorController anchorController;
 
         private CancellationToken _ctOnDestroy;
-        private float _playerLightIntensityDefault;
         private void Start()
         {
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
             BreakRandomlyAsync(_ctOnDestroy).Forget();
-            _playerLightIntensityDefault = playerLight.intensity;
         }
         private void Update()
         {
-            flashlight.enabled = IsWorking;
+            anchorController.CanMoveDown = IsWorking;
         }
         public override void StartQte()
         {
             IsWorking = false;
-            playerLight.intensity = playerLightIntensityOnOff;
         }
         private async UniTask BreakRandomlyAsync(CancellationToken token)
         {
@@ -63,22 +52,9 @@ namespace QuickTimeEvents
         }
         private void OnQTESuccess()
         {
-            OnQTESuccessAsync(_ctOnDestroy).Forget();
-        }
-        private async UniTask OnQTESuccessAsync(CancellationToken token)
-        {
-            for (int i = 0; i < flickers; i++)
-            {
-                flashlight.enabled = true;
-                playerLight.intensity = _playerLightIntensityDefault;
-                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
-                flashlight.enabled = false;
-                playerLight.intensity = playerLightIntensityOnOff;
-                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
-            }
             IsWorking = true;
-            playerLight.intensity = _playerLightIntensityDefault;
-            flashlight.enabled = true;
+            anchorController.CanMoveDown = true;
         }
+        
     }
 }
