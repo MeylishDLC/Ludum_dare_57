@@ -4,41 +4,41 @@ namespace RopeScript
 {
     public class AnchorController : MonoBehaviour
     {
-        public Transform ropeAnchor;       // Объект якоря верёвки (например, платформа или крючок)
-        public float moveStep = 0.1f;      // Насколько опустить за "тык"
-        public float holdSpeed = 0.05f;    // Скорость опускания при удержании
-        public float holdDelay = 0.05f;    // Частота опускания при удержании
+        [SerializeField] private Transform ropeAnchor;
+        [SerializeField] private float moveStep = 0.1f;
+        [SerializeField] private float holdSpeed = 0.05f;
+        [SerializeField] private float holdDelay = 0.05f;
 
-        private float holdTimer = 0f;
+        private float _holdTimer;
 
-        void Update()
+        private void Update()
         {
-            if (ropeAnchor == null)
+            if (!ropeAnchor)
+            {
                 return;
+            }
 
-            Vector3 position = ropeAnchor.position;
+            var position = ropeAnchor.position;
 
-            // Одноразовое нажатие вниз
             if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
             {
                 position.y -= moveStep;
                 ropeAnchor.position = position;
             }
 
-            // Удержание кнопки вниз
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
-                holdTimer += Time.deltaTime;
-                if (holdTimer >= holdDelay)
+                _holdTimer += Time.deltaTime;
+                if (_holdTimer >= holdDelay)
                 {
                     position.y -= holdSpeed;
                     ropeAnchor.position = position;
-                    holdTimer = 0f;
+                    _holdTimer = 0f;
                 }
             }
             else
             {
-                holdTimer = 0f;
+                _holdTimer = 0f;
             }
         }
     }
