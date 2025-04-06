@@ -7,6 +7,7 @@ namespace Rocks
     [RequireComponent(typeof(Collider2D))]
     public class RockTrigger: MonoBehaviour
     {
+        [SerializeField] private GameObject rockPrefab;
         [SerializeField] private Transform rockFallPoint;
         [SerializeField] private float delayBeforeRockSpawn;
         private RockSpawnUtility _rockSpawnUtility;
@@ -29,7 +30,14 @@ namespace Rocks
         private void TriggerRockFall()
         {
             _isTriggered = true;
-            _rockSpawnUtility.SpawnRock(rockFallPoint.position);
+            if (rockPrefab)
+            {
+                _rockSpawnUtility.SpawnRock(rockPrefab, rockFallPoint.position);
+            }
+            else
+            {
+                _rockSpawnUtility.SpawnRandomRock(rockFallPoint.position);
+            }
         }
     }
 }

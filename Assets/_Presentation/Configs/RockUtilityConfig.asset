@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: RockUtilityConfig
   m_EditorClassIdentifier: 
   <RocksPrefabs>k__BackingField:
-  - {fileID: 8845538589251594550, guid: 548556ab110ed9b4bbcadd271f5c84fe, type: 3}
+  - {fileID: 2467546829599767139, guid: 9a591531ac8594349947893900320ada, type: 3}
+  - {fileID: 6462931219715885658, guid: a79323ed89e35b040a7f797f652a6c7d, type: 3}
+  - {fileID: 113804348326430071, guid: beb97a4fce4c1b24aa404f3b713e0ef3, type: 3}

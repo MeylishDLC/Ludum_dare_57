@@ -42,7 +42,7 @@ namespace Rocks
                 while (true)
                 {
                     var spawnPos = GetSpawnPosition();
-                    _rockSpawnUtility.SpawnRock(spawnPos);
+                    _rockSpawnUtility.SpawnRandomRock(spawnPos);
                     var randomDelay = Random.Range(minSpawnInterval, maxSpawnInterval);
                     await UniTask.Delay(TimeSpan.FromSeconds(randomDelay), cancellationToken: token);
                 }
