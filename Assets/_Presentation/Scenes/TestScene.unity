@@ -5442,7 +5442,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathScreen: {fileID: 563364713}
-  fadeInTime: 0.5
+  fadeInTime: 1
   restartButton: {fileID: 1366020204}
 --- !u!1 &455299347
 GameObject:

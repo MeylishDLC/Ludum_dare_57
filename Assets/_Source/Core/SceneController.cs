@@ -7,9 +7,8 @@ namespace Core
     {
         public void RestartScene()
         {
-            var curSceneIndex = SceneManager.GetActiveScene().buildIndex;
-            SceneManager.UnloadSceneAsync(curSceneIndex).ToUniTask().ContinueWith(
-                () => SceneManager.LoadSceneAsync(curSceneIndex)).Forget();
+            var curSceneIndex = SceneManager.GetActiveScene().buildIndex; 
+            SceneManager.LoadSceneAsync(curSceneIndex);
         }
     }
 }
