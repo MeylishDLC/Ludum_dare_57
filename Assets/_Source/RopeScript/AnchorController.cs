@@ -9,21 +9,34 @@ namespace RopeScript
 {
     public class AnchorController : MonoBehaviour
     {
+        public event Action OnEndReached; 
         public bool CanMoveDown { get; set; } = true;
 
         [SerializeField] private Transform ropeAnchor;
         [SerializeField] private List<Transform> pathPoints;
-        [SerializeField] private float moveSpeed = 0.05f; // расстояние на шаг
+        [SerializeField] private float moveSpeed = 0.05f;
         [SerializeField] private float holdDelay = 0.05f;
 
+        private bool _endReached;
         private float _holdTimer;
-        private int _currentSegment = 0;
-        private float _segmentProgress = 0f;
+        private int _currentSegment;
+        private float _segmentProgress;
 
+        private void Start()
+        {
+            OnEndReached += DisableMovement;
+        }
+
+        private void OnDestroy()
+        {
+            OnEndReached -= DisableMovement;
+        }
         private void Update()
         {
             if (!ropeAnchor || pathPoints.Count < 2 || !CanMoveDown)
+            {
                 return;
+            }
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
@@ -54,16 +67,24 @@ namespace RopeScript
             _currentSegment = 0;
             _segmentProgress = 0f;
         }
+        private void DisableMovement() => CanMoveDown = false;
         private void MoveAlongPath()
         {
             if (_currentSegment >= pathPoints.Count - 1)
+            {
+                if (!_endReached)
+                {
+                    OnEndReached?.Invoke();
+                    _endReached = true;
+                }
                 return;
+            }
 
-            Transform start = pathPoints[_currentSegment];
-            Transform end = pathPoints[_currentSegment + 1];
+            var start = pathPoints[_currentSegment];
+            var end = pathPoints[_currentSegment + 1];
 
-            float segmentLength = Vector3.Distance(start.position, end.position);
-            float step = moveSpeed / segmentLength;
+            var segmentLength = Vector3.Distance(start.position, end.position);
+            var step = moveSpeed / segmentLength;
 
             _segmentProgress += step;
 
@@ -73,7 +94,6 @@ namespace RopeScript
                 _currentSegment++;
                 ropeAnchor.position = end.position;
 
-                // Удаляем временную точку
                 if (start.name == "TempStartPoint")
                 {
                     Destroy(start.gameObject);

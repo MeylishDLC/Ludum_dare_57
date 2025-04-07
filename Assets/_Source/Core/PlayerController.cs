@@ -2,7 +2,9 @@ using System;
 using System.Threading;
 using Cysharp.Threading.Tasks;
 using Rocks;
+using RopeScript;
 using UnityEngine;
+using Zenject;
 
 namespace Core
 {
@@ -14,11 +16,20 @@ namespace Core
         [SerializeField] private float delayBeforeFall = 0.2f;
         [SerializeField] private float delayBeforeDeath;
 
+        private AnchorController _anchorController;
         private CancellationToken _ctOnDestroy;
         private HingeJoint2D _joint;
         private Rigidbody2D _rb;
+        private bool _canMove = true;
+
+        [Inject]
+        public void Initialize(AnchorController anchorController)
+        {
+            _anchorController = anchorController;
+        }
         private void Start()
         {
+            _anchorController.OnEndReached += DisableMovement;
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
             _rb = GetComponent<Rigidbody2D>();
             _joint = GetComponent<HingeJoint2D>();
@@ -26,13 +37,18 @@ namespace Core
         }
         private void OnDestroy()
         {
+            _anchorController.OnEndReached -= DisableMovement;
             Rock.OnRockHitPlayer -= Die;
         }
-
         private void Update() 
         {
+            if (!_canMove)
+            {
+                return;
+            }
             HandleMovement();
         }
+        private void DisableMovement() => _canMove = false;
         private void Die()
         {
             DieAsync(_ctOnDestroy).Forget();
@@ -43,8 +59,6 @@ namespace Core
             _joint.enabled = false;
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeDeath), cancellationToken: token);
             OnPlayerDeath?.Invoke();
-            Debug.Log("DEATH");
-            //todo show death screen
         }
         private void HandleMovement()
         {
