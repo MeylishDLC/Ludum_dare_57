@@ -39,7 +39,21 @@ namespace RopeScript
                 _holdTimer = 0f;
             }
         }
+        public void SetNewPath(List<Transform> newPath)
+        {
+            if (newPath == null || newPath.Count < 1)
+                return;
 
+            pathPoints = new List<Transform>(newPath);
+    
+            var tempStart = new GameObject("TempStartPoint");
+            tempStart.transform.position = ropeAnchor.position;
+
+            pathPoints.Insert(0, tempStart.transform);
+
+            _currentSegment = 0;
+            _segmentProgress = 0f;
+        }
         private void MoveAlongPath()
         {
             if (_currentSegment >= pathPoints.Count - 1)
@@ -58,6 +72,12 @@ namespace RopeScript
                 _segmentProgress = 0f;
                 _currentSegment++;
                 ropeAnchor.position = end.position;
+
+                // Удаляем временную точку
+                if (start.name == "TempStartPoint")
+                {
+                    Destroy(start.gameObject);
+                }
             }
             else
             {

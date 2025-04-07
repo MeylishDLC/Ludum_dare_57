@@ -24,7 +24,10 @@ namespace Rocks
             {
                 return;
             }
-            TriggerRockFall();
+            if (other.gameObject.layer == LayerMask.NameToLayer("Player"))
+            {
+                TriggerRockFall();
+            }
         }
 
         private void TriggerRockFall()

@@ -1,6 +1,7 @@
 using Core;
 using QuickTimeEvents;
 using Rocks;
+using RopeScript;
 using UnityEngine;
 using Zenject;
 
@@ -12,6 +13,7 @@ namespace Installers
         [SerializeField] private Camera mainCamera;
         [SerializeField] private PlayerController player;
         [SerializeField] private RockUtilityConfig rockUtilityConfig;
+        [SerializeField] private AnchorController anchorController;
         
         private SceneController _sceneController;
         public override void InstallBindings()
@@ -20,6 +22,7 @@ namespace Installers
             BindPlayer();
             BindSceneController();
             BindRockSpawnUtility();
+            BindAnchorController();
         }
         private void BindPlayer()
         {
@@ -39,6 +42,11 @@ namespace Installers
         {
             var utility = new RockSpawnUtility(rockUtilityConfig);
             Container.Bind<RockSpawnUtility>().FromInstance(utility).AsSingle();
+        }
+
+        private void BindAnchorController()
+        {
+            Container.Bind<AnchorController>().FromInstance(anchorController).AsSingle();
         }
     }
 }
