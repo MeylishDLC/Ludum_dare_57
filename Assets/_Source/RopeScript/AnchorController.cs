@@ -21,6 +21,7 @@ namespace RopeScript
         private float _holdTimer;
         private int _currentSegment;
         private float _segmentProgress;
+        private bool _newPathSet;
 
         private void Start()
         {
@@ -66,6 +67,7 @@ namespace RopeScript
 
             _currentSegment = 0;
             _segmentProgress = 0f;
+            _newPathSet = true;
         }
         private void DisableMovement() => CanMoveDown = false;
         private void MoveAlongPath()
@@ -74,8 +76,11 @@ namespace RopeScript
             {
                 if (!_endReached)
                 {
-                    OnEndReached?.Invoke();
-                    _endReached = true;
+                    if (_newPathSet)
+                    {
+                        OnEndReached?.Invoke();
+                        _endReached = true;
+                    }
                 }
                 return;
             }
