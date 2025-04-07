@@ -14,8 +14,7 @@ namespace Installers
         [SerializeField] private PlayerController player;
         [SerializeField] private RockUtilityConfig rockUtilityConfig;
         [SerializeField] private AnchorController anchorController;
-        
-        private SceneController _sceneController;
+        [SerializeField] private SceneController sceneControllerPrefab;
         public override void InstallBindings()
         {
             BindCamera();
@@ -34,8 +33,8 @@ namespace Installers
         }
         private void BindSceneController()
         {
-            _sceneController = new SceneController();
-            Container.Bind<SceneController>().FromInstance(_sceneController).AsSingle();
+            var controller = Container.InstantiatePrefabForComponent<SceneController>(sceneControllerPrefab);
+            Container.Bind<SceneController>().FromInstance(controller).AsSingle();
         }
 
         private void BindRockSpawnUtility()

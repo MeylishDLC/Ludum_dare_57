@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{ffc3fb20-fe4e-4cbc-91c4-ae954466c17f}">
+		<property name="assetPath">
+			<value>SFX/летучие мыши 5 секунд .mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>5.0155102040816324</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8ff461c2-a6ed-4b1a-8c04-f8ce6d0af337}</destination>
+		</relationship>
+	</object>
+</objects>

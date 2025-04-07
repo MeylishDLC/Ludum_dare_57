@@ -47514,6 +47514,7 @@ MonoBehaviour:
   player: {fileID: 624858738}
   rockUtilityConfig: {fileID: 11400000, guid: 5a401c0932956674eac57d98a410977c, type: 2}
   anchorController: {fileID: 1775967941}
+  sceneControllerPrefab: {fileID: 996441304235162137, guid: f093485f002f56f4988a9dea02a8573c, type: 3}
 --- !u!1 &1526523076
 GameObject:
   m_ObjectHideFlags: 0
@@ -99239,7 +99240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 617c9cc059714dbf83bd530880d04750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerJoint: {fileID: 624858736}
   giantRockKillerPrefab: {fileID: 1985295434879924664, guid: 7f8e345e167fa5849b4da8c946b1a8b2, type: 3}
   otherRocksToSpawn:
   - {fileID: 2467546829599767139, guid: b2b66b3d23677064abad4410c86e5726, type: 3}

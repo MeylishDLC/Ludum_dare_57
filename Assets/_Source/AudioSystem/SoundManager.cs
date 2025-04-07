@@ -11,8 +11,6 @@ namespace AudioSystem
 {
     public class SoundManager: MonoBehaviour
     {
-        public bool MusicInitialized { get; private set; }
-
         [BankRef]
         public List<string> Banks;
         
@@ -37,8 +35,6 @@ namespace AudioSystem
             MasterBus = RuntimeManager.GetBus("bus:/");
             MusicBus = RuntimeManager.GetBus("bus:/Music");
             FfxBus = RuntimeManager.GetBus("bus:/SFX");
-            InitializeMusic(FMODEvents.MainMenuMusic);
-            MusicInitialized = true;
         }
         private void Update()
         {
@@ -46,7 +42,6 @@ namespace AudioSystem
             MusicBus.setVolume(MusicVolume);
             FfxBus.setVolume(SFXVolume);
         }
-  
         public void PlayOneShot(EventReference sound)
         {
             RuntimeManager.PlayOneShot(sound);

@@ -16,7 +16,6 @@ namespace Core
         [SerializeField] private float delayBeforeFall = 0.2f;
         [SerializeField] private float delayBeforeDeath;
 
-        private Collider2D _col;
         private AnchorController _anchorController;
         private CancellationToken _ctOnDestroy;
         private HingeJoint2D _joint;
@@ -33,7 +32,6 @@ namespace Core
             _anchorController.OnEndReached += DisableMovement;
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
 
-            _col = GetComponent<Collider2D>();
             _rb = GetComponent<Rigidbody2D>();
             _joint = GetComponent<HingeJoint2D>();
             Rock.OnRockHitPlayer += Die;

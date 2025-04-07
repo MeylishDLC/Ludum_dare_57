@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{5e0dad5a-e40b-43f0-a7b5-9d5c59d8acb8}">
+		<property name="assetPath">
+			<value>SFX/звук капель.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>22.047346938775512</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{8ff461c2-a6ed-4b1a-8c04-f8ce6d0af337}</destination>
+		</relationship>
+	</object>
+</objects>

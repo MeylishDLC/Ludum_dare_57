@@ -21,50 +21,92 @@ MonoBehaviour:
     Path: 
   <CaveAmbient>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <BatsSound>k__BackingField:
-    Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -2063871899
+      Data2: 1291836120
+      Data3: 248757679
+      Data4: 79870675
+    Path: event:/Music/Ambient
   <RockFallOnPlayerSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <RopeSwing>k__BackingField:
+      Data1: 1793621231
+      Data2: 1334193000
+      Data3: -289727308
+      Data4: -2080491627
+    Path: event:/SFX/RockFallOnHead
+  <RopeSwingSound>k__BackingField:
+    Guid:
+      Data1: 795064165
+      Data2: 1225324693
+      Data3: 2117937573
+      Data4: 649423415
+    Path: event:/SFX/RopeSwingSound
+  <RopeMovingDownSound>k__BackingField:
     Guid:
       Data1: 0
       Data2: 0
       Data3: 0
       Data4: 0
     Path: 
-  <RopeMovingDown>k__BackingField:
+  <RocksStartFallingSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <PlayerFallToGround>k__BackingField:
+      Data1: -327975561
+      Data2: 1202941596
+      Data3: -1790136680
+      Data4: 1902826019
+    Path: event:/SFX/EndingRocksFalling
+  <GiantRockKillsPlayerSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
-  <DropsFalling>k__BackingField:
+      Data1: -101693713
+      Data2: 1161644017
+      Data3: -1616680819
+      Data4: 1012794816
+    Path: event:/SFX/KillerRockFallen
+  <LastMessageSound>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: -1830815180
+      Data2: 1208405930
+      Data3: -1629207135
+      Data4: -1465999627
+    Path: event:/SFX/RadioEnding
+  <CorpseSound>k__BackingField:
+    Guid:
+      Data1: -1490823613
+      Data2: 1110502020
+      Data3: 919469214
+      Data4: 1971029759
+    Path: event:/SFX/Corpse
+  <DropsFallingSound>k__BackingField:
+    Guid:
+      Data1: -1303943206
+      Data2: 1079257814
+      Data3: 847933871
+      Data4: 888316386
+    Path: event:/SFX/WaterDrops
+  <BatsSoundSound>k__BackingField:
+    Guid:
+      Data1: 1828991680
+      Data2: 1211243428
+      Data3: 1975137956
+      Data4: 1055845130
+    Path: event:/SFX/Bats
+  <Help1Sound>k__BackingField:
+    Guid:
+      Data1: -1873610566
+      Data2: 1156907311
+      Data3: -1155832912
+      Data4: -475664728
+    Path: event:/SFX/1HelpEcho
+  <Help2Sound>k__BackingField:
+    Guid:
+      Data1: -2087959802
+      Data2: 1250242972
+      Data3: 1478184852
+      Data4: 1486602640
+    Path: event:/SFX/2HelpEcho
+  <HelpDyingSound>k__BackingField:
+    Guid:
+      Data1: -1490823613
+      Data2: 1110502020
+      Data3: 919469214
+      Data4: 1971029759
+    Path: event:/SFX/Corpse

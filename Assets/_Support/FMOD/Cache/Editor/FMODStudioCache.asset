@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7685340567295554657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/EndingRocksFalling
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/EndingRocksFalling
+  Guid:
+    Data1: -327975561
+    Data2: 1202941596
+    Data3: -1790136680
+    Data4: 1902826019
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-5642893059214918298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15,11 +42,38 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638796343431759611
+  lastModified: 638796438005922436
   FileSizes:
   - Name: Desktop
-    Value: 874
+    Value: 1488
   Exists: 1
+--- !u!114 &-5388808636099637830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/RadioEnding
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RadioEnding
+  Guid:
+    Data1: -1830815180
+    Data2: 1208405930
+    Data3: -1629207135
+    Data4: -1465999627
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-4922486998644108414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35,11 +89,38 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638794094295376331
+  lastModified: 638796433685236405
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 233664
   Exists: 1
+--- !u!114 &-3692057303175050782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/RopeSwingSound
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RopeSwingSound
+  Guid:
+    Data1: 795064165
+    Data2: 1225324693
+    Data3: 2117937573
+    Data4: 649423415
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3358591031886675195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55,11 +136,119 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638796343431210573
+  lastModified: 638796438005912424
   FileSizes:
   - Name: Desktop
     Value: 1340
   Exists: 1
+--- !u!114 &-2632492373857240624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/1HelpEcho
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/1HelpEcho
+  Guid:
+    Data1: -1873610566
+    Data2: 1156907311
+    Data3: -1155832912
+    Data4: -475664728
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &-2499583068977133550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Corpse
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Corpse
+  Guid:
+    Data1: -1490823613
+    Data2: 1110502020
+    Data3: 919469214
+    Data4: 1971029759
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 14393
+--- !u!114 &-2412048532057808593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/Ambient
+  m_EditorClassIdentifier: 
+  Path: event:/Music/Ambient
+  Guid:
+    Data1: -2063871899
+    Data2: 1291836120
+    Data3: 248757679
+    Data4: 79870675
+  Banks:
+  - {fileID: -4922486998644108414}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 50546
+--- !u!114 &-1300738025571122356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Bats
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Bats
+  Guid:
+    Data1: 1828991680
+    Data2: 1211243428
+    Data3: 1975137956
+    Data4: 1055845130
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-666838489348372948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,10 +264,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638794094295406330
+  lastModified: 638796438006851716
   FileSizes:
   - Name: Desktop
-    Value: 494
+    Value: 1302624
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -97,11 +286,186 @@ MonoBehaviour:
   - {fileID: -3358591031886675195}
   - {fileID: -4922486998644108414}
   - {fileID: -666838489348372948}
-  EditorEvents: []
+  EditorEvents:
+  - {fileID: -2412048532057808593}
+  - {fileID: 5258096563459706532}
+  - {fileID: -5388808636099637830}
+  - {fileID: -2499583068977133550}
+  - {fileID: 6057901237507662622}
+  - {fileID: -3692057303175050782}
+  - {fileID: -7685340567295554657}
+  - {fileID: 5701873787545786238}
+  - {fileID: -2632492373857240624}
+  - {fileID: -1300738025571122356}
+  - {fileID: 6275883834562446285}
+  - {fileID: 6491117030469242808}
+  - {fileID: 8007908015101859067}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3358591031886675195}
   StringsBanks:
   - {fileID: -5642893059214918298}
-  cacheTime: 638796343431759611
+  cacheTime: 638796438006851716
   cacheVersion: 131620
+--- !u!114 &5258096563459706532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/2HelpEcho
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/2HelpEcho
+  Guid:
+    Data1: -2087959802
+    Data2: 1250242972
+    Data3: 1478184852
+    Data4: 1486602640
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &5701873787545786238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/DyingHelpEcho
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/DyingHelpEcho
+  Guid:
+    Data1: 1246962358
+    Data2: 1173595990
+    Data3: -301332559
+    Data4: 1521069946
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6057901237507662622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/RocksWarn
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RocksWarn
+  Guid:
+    Data1: -1063191719
+    Data2: 1210182135
+    Data3: 927273658
+    Data4: 410593493
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6275883834562446285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/KillerRockFallen
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/KillerRockFallen
+  Guid:
+    Data1: -101693713
+    Data2: 1161644017
+    Data3: -1616680819
+    Data4: 1012794816
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &6491117030469242808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/RockFallOnHead
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/RockFallOnHead
+  Guid:
+    Data1: 1793621231
+    Data2: 1334193000
+    Data3: -289727308
+    Data4: -2080491627
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8007908015101859067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/WaterDrops
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/WaterDrops
+  Guid:
+    Data1: -1303943206
+    Data2: 1079257814
+    Data3: 847933871
+    Data4: 888316386
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 22047
