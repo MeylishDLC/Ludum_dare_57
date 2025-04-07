@@ -1,5 +1,6 @@
 using System;
 using System.Threading;
+using AudioSystem;
 using Cysharp.Threading.Tasks;
 using Rocks;
 using RopeScript;
@@ -20,12 +21,15 @@ namespace Core
         private CancellationToken _ctOnDestroy;
         private HingeJoint2D _joint;
         private Rigidbody2D _rb;
+        private SoundManager _soundManager;
         private bool _canMove = true;
+        private bool _isDead;
 
         [Inject]
-        public void Initialize(AnchorController anchorController)
+        public void Initialize(AnchorController anchorController, SoundManager soundManager)
         {
             _anchorController = anchorController;
+            _soundManager = soundManager;
         }
         private void Start()
         {
@@ -55,6 +59,11 @@ namespace Core
         public void EnableMovement() => _canMove = true;
         private void Die()
         {
+            if (_isDead)
+            {
+                return;
+            }
+            _isDead = true;
             DieAsync(_ctOnDestroy).Forget();
         }
         private void CutOffRope()
@@ -64,6 +73,7 @@ namespace Core
         }
         private async UniTask DieAsync(CancellationToken token)
         {
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.RockFallOnPlayerSound);
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeFall), cancellationToken: token); 
             CutOffRope();
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeDeath), cancellationToken: token);

@@ -1,5 +1,32 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-7755260511723092331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/HookBroken
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/HookBroken
+  Guid:
+    Data1: -500227208
+    Data2: 1265435111
+    Data3: 1008959901
+    Data4: -638904180
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-7685340567295554657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,10 +69,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638796438005922436
+  lastModified: 638796462570178845
   FileSizes:
   - Name: Desktop
-    Value: 1488
+    Value: 1570
   Exists: 1
 --- !u!114 &-5388808636099637830
 MonoBehaviour:
@@ -94,6 +121,33 @@ MonoBehaviour:
   - Name: Desktop
     Value: 233664
   Exists: 1
+--- !u!114 &-4427776591124742272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/SFX/Flashlight
+  m_EditorClassIdentifier: 
+  Path: event:/SFX/Flashlight
+  Guid:
+    Data1: 1268279309
+    Data2: 1130360261
+    Data3: -943117150
+    Data4: 1628940936
+  Banks:
+  - {fileID: -666838489348372948}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &-3692057303175050782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +190,7 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638796438005912424
+  lastModified: 638796462570168840
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -264,10 +318,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/SFX.bank
   Name: SFX
   StudioPath: bank:/SFX
-  lastModified: 638796438006851716
+  lastModified: 638796488425821910
   FileSizes:
   - Name: Desktop
-    Value: 1302624
+    Value: 1319488
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -300,12 +354,14 @@ MonoBehaviour:
   - {fileID: 6275883834562446285}
   - {fileID: 6491117030469242808}
   - {fileID: 8007908015101859067}
+  - {fileID: -4427776591124742272}
+  - {fileID: -7755260511723092331}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3358591031886675195}
   StringsBanks:
   - {fileID: -5642893059214918298}
-  cacheTime: 638796438006851716
+  cacheTime: 638796488425821910
   cacheVersion: 131620
 --- !u!114 &5258096563459706532
 MonoBehaviour:

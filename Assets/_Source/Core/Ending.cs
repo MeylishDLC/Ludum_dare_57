@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
+using AudioSystem;
 using Cinemachine;
 using Cysharp.Threading.Tasks;
 using FMOD.Studio;
@@ -10,6 +11,7 @@ using QuickTimeEvents;
 using Rocks;
 using RopeScript;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using Zenject;
 using Random = System.Random;
 
@@ -20,6 +22,8 @@ namespace Core
         public event Action OnEnd;
 
         [Header("Ending Stuff")] 
+        [SerializeField] private Flashlight flashlight;
+        [SerializeField] private DeadFriend deadFriend;
         [SerializeField] private GiantRockKiller giantRockKillerPrefab;
         [SerializeField] private List<GameObject> otherRocksToSpawn;
         [SerializeField] private Transform giantRockKillerSpawnPoint;
@@ -38,11 +42,13 @@ namespace Core
         private int _mainCamPriority;
         private CancellationToken _ctOnDestroy;
         private AnchorController _anchorController;
+        private SoundManager _soundManager;
 
         [Inject]
-        public void Initialize(AnchorController anchorController)
+        public void Initialize(AnchorController anchorController, SoundManager soundManager)
         {
             _anchorController = anchorController;
+            _soundManager = soundManager;
         }
         private void Start()
         {
@@ -59,7 +65,10 @@ namespace Core
         private async UniTask PlayCutsceneAsync(CancellationToken token)
         {
             bestieCamera.Priority = _mainCamPriority++;
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.LastMessageSound);
             await UniTask.Delay(TimeSpan.FromSeconds(timeToListenLastWords), cancellationToken: token);
+            
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.RocksStartFallingSound);
             await UniTask.Delay(TimeSpan.FromSeconds(timeBeforeRockFall), cancellationToken: token);
             SpawnGiantRock();
         }
@@ -72,7 +81,8 @@ namespace Core
         private void ShakeCam()
         {
             _spawnedGiantRockKiller.OnFall -= ShakeCam;
-            //playerJoint.enabled = false;
+            TurnOffLight();
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.GiantRockKillsPlayerSound);
             impulseSource.GenerateImpulse(impulseStrength);
             ShowEndingAsync(_ctOnDestroy).Forget();
         }
@@ -80,6 +90,12 @@ namespace Core
         {
             await UniTask.Delay(TimeSpan.FromSeconds(timeBeforeSceneFadeOut), cancellationToken: token);
             OnEnd?.Invoke();
+        }
+
+        private void TurnOffLight()
+        {
+            flashlight.BlinkAndTurnOffAsync(_ctOnDestroy).Forget();
+            deadFriend.BlinkAndTurnOffAsync(_ctOnDestroy).Forget();
         }
         private async UniTask SpawnSmallRocksAsync(CancellationToken token)
         {

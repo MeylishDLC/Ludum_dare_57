@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Core;
 using RopeScript;
 using UnityEngine;
 using Zenject;
@@ -11,20 +12,24 @@ namespace QuickTimeEvents
         [SerializeField] public SerializedDictionary<BaseQte, QteHandler> qtePairs;
 
         private AnchorController _anchorController;
+        private PlayerController _playerController;
         [Inject]
-        public void Initialize(AnchorController anchorController)
+        public void Initialize(AnchorController anchorController, PlayerController playerControllers)
         {
             _anchorController = anchorController;
+            _playerController = playerControllers;
         }
         private void Start()
         {
             _anchorController.OnEndReached += SelfDestroy;
+            _playerController.OnPlayerDeath += SelfDestroy;
             SubscribeOnEvents();
         }
         private void OnDestroy()
         {
             UnsubscribeOnEvents();
             _anchorController.OnEndReached -= SelfDestroy;
+            _playerController.OnPlayerDeath -= SelfDestroy;
         }
         private void SelfDestroy() => Destroy(gameObject);
         private void UnsubscribeOnEvents()

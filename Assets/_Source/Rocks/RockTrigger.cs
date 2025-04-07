@@ -1,4 +1,5 @@
 ﻿using System;
+using AudioSystem;
 using UnityEngine;
 using Zenject;
 
@@ -11,11 +12,13 @@ namespace Rocks
         [SerializeField] private Transform rockFallPoint;
         [SerializeField] private float delayBeforeRockSpawn;
         private RockSpawnUtility _rockSpawnUtility;
+        private SoundManager _soundManager;
         private bool _isTriggered;
         
         [Inject]
-        public void Initialize(RockSpawnUtility rockSpawnUtility)
+        public void Initialize(RockSpawnUtility rockSpawnUtility, SoundManager soundManager)
         {
+            _soundManager = soundManager;
             _rockSpawnUtility = rockSpawnUtility;
         }
         private void OnTriggerEnter2D(Collider2D other)
@@ -41,6 +44,7 @@ namespace Rocks
             {
                 _rockSpawnUtility.SpawnRandomRock(rockFallPoint.position);
             }
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.RockWarn);
         }
     }
 }

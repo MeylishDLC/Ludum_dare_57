@@ -9,6 +9,7 @@ namespace Rocks
         public static event Action OnRockHitPlayer;
         
         [field:SerializeField] public RockTypes RockType {get; private set;}
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.gameObject.layer == LayerMask.NameToLayer("Player"))

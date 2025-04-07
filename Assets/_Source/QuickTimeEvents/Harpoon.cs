@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using AudioSystem;
 using Core;
 using Cysharp.Threading.Tasks;
 using RopeScript;
@@ -21,10 +22,12 @@ namespace QuickTimeEvents
 
         private CancellationToken _ctOnDestroy;
         private PlayerController _playerController;
+        private SoundManager _soundManager;
 
         [Inject]
-        public void Initialize(PlayerController playerController)
+        public void Initialize(PlayerController playerController, SoundManager soundManager)
         {
+            _soundManager = soundManager;
             _playerController = playerController;
         }
         private void Start()
@@ -38,6 +41,7 @@ namespace QuickTimeEvents
         }
         public override void StartQte()
         {
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.HookBrokenSound);
             _playerController.DisableMovement();
             IsWorking = false;
         }

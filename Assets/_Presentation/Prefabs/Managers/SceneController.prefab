@@ -44,3 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f301f2d8ed1245349866642cfd8db59b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minSoundInterval: 15
+  maxSoundInterval: 40

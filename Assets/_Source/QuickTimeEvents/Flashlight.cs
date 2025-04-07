@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
+using AudioSystem;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -28,7 +29,13 @@ namespace QuickTimeEvents
         [SerializeField] private float flickerInterval = 0.2f;
 
         private CancellationToken _ctOnDestroy;
+        private SoundManager _soundManager;
         private float _playerLightIntensityDefault;
+        [Inject]
+        public void Initialize(SoundManager soundManager)
+        {
+            _soundManager = soundManager;
+        }
         private void Start()
         {
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
@@ -41,8 +48,24 @@ namespace QuickTimeEvents
         }
         public override void StartQte()
         {
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.FlashlightSound);
             IsWorking = false;
             playerLight.intensity = playerLightIntensityOnOff;
+        }
+
+        public async UniTask BlinkAndTurnOffAsync(CancellationToken token)
+        {
+            for (int i = 0; i < flickers; i++)
+            {
+                flashlight.enabled = true;
+                playerLight.intensity = _playerLightIntensityDefault;
+                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
+                flashlight.enabled = false;
+                playerLight.intensity = playerLightIntensityOnOff;
+                await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
+            }
+            playerLight.intensity = playerLightIntensityOnOff;
+            flashlight.enabled = false;
         }
         private async UniTask BreakRandomlyAsync(CancellationToken token)
         {
@@ -77,6 +100,7 @@ namespace QuickTimeEvents
                 await UniTask.Delay(TimeSpan.FromSeconds(flickerInterval), cancellationToken: token);
             }
             IsWorking = true;
+            _soundManager.PlayOneShot(_soundManager.FMODEvents.FlashlightSound);
             playerLight.intensity = _playerLightIntensityDefault;
             flashlight.enabled = true;
         }

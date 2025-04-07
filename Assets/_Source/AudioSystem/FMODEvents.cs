@@ -12,9 +12,10 @@ namespace AudioSystem
         
         [field: Header("SFX")]
         [field:SerializeField] public EventReference RockFallOnPlayerSound { get; private set; }
+        [field:SerializeField] public EventReference RockWarn { get; private set; }
         [field:SerializeField] public EventReference RopeSwingSound { get; private set; }
-        [field:SerializeField] public EventReference RopeMovingDownSound { get; private set; }
-
+        [field:SerializeField] public EventReference FlashlightSound { get; private set; }
+        [field:SerializeField] public EventReference HookBrokenSound { get; private set; }
         
         [field: Header("Ending SFX")]
         [field:SerializeField] public EventReference RocksStartFallingSound { get; private set; }
@@ -24,7 +25,7 @@ namespace AudioSystem
         
         [field: Header("Random SFX")]
         [field:SerializeField] public EventReference DropsFallingSound { get; private set; }
-        [field:SerializeField] public EventReference BatsSoundSound { get; private set; }
+        [field:SerializeField] public EventReference BatsSound { get; private set; }
 
         [field: Header("Helps SFX")]
         [field:SerializeField] public EventReference Help1Sound { get; private set; }
