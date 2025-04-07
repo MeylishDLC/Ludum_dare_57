@@ -1,54 +1,67 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Threading;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace RopeScript
 {
     public class AnchorController : MonoBehaviour
     {
         public bool CanMoveDown { get; set; } = true;
-        
+
         [SerializeField] private Transform ropeAnchor;
-        [SerializeField] private float moveStep = 0.1f;
-        [SerializeField] private float holdSpeed = 0.05f;
+        [SerializeField] private List<Transform> pathPoints;
+        [SerializeField] private float moveSpeed = 0.05f; // расстояние на шаг
         [SerializeField] private float holdDelay = 0.05f;
 
         private float _holdTimer;
+        private int _currentSegment = 0;
+        private float _segmentProgress = 0f;
 
         private void Update()
         {
-            if (!ropeAnchor)
-            {
+            if (!ropeAnchor || pathPoints.Count < 2 || !CanMoveDown)
                 return;
-            }
-            if (!CanMoveDown)
-            {
-                return;
-            }
-            HandleMovementDown();
-        }
-
-        private void HandleMovementDown()
-        {
-            var position = ropeAnchor.position;
-
-            if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-            {
-                position.y -= moveStep;
-                ropeAnchor.position = position;
-            }
 
             if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
             {
                 _holdTimer += Time.deltaTime;
                 if (_holdTimer >= holdDelay)
                 {
-                    position.y -= holdSpeed;
-                    ropeAnchor.position = position;
+                    MoveAlongPath();
                     _holdTimer = 0f;
                 }
             }
             else
             {
                 _holdTimer = 0f;
+            }
+        }
+
+        private void MoveAlongPath()
+        {
+            if (_currentSegment >= pathPoints.Count - 1)
+                return;
+
+            Transform start = pathPoints[_currentSegment];
+            Transform end = pathPoints[_currentSegment + 1];
+
+            float segmentLength = Vector3.Distance(start.position, end.position);
+            float step = moveSpeed / segmentLength;
+
+            _segmentProgress += step;
+
+            if (_segmentProgress >= 1f)
+            {
+                _segmentProgress = 0f;
+                _currentSegment++;
+                ropeAnchor.position = end.position;
+            }
+            else
+            {
+                ropeAnchor.position = Vector3.Lerp(start.position, end.position, _segmentProgress);
             }
         }
     }

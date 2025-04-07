@@ -15,19 +15,19 @@ MonoBehaviour:
   active: 1
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.66
+    m_Value: 0.3
   contrast:
     m_OverrideState: 1
-    m_Value: 29
+    m_Value: 12
   colorFilter:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   hueShift:
-    m_OverrideState: 1
-    m_Value: 0
+    m_OverrideState: 0
+    m_Value: 127
   saturation:
     m_OverrideState: 1
-    m_Value: -89
+    m_Value: -100
 --- !u!114 &-4377830998803331967
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -105,7 +105,7 @@ MonoBehaviour:
     m_Value: 0.62
   intensity:
     m_OverrideState: 1
-    m_Value: 0.09
+    m_Value: 0.22
   scatter:
     m_OverrideState: 0
     m_Value: 0.7
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5485954d14dfb9a4c8ead8edb0ded5b1, type: 3}
   m_Name: LiftGammaGain
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   lift:
     m_OverrideState: 0
     m_Value: {x: 1, y: 1, z: 1, w: 0}
@@ -194,7 +194,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.006
+    m_Value: 0.217
   smoothness:
     m_OverrideState: 0
     m_Value: 0.2
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: 0.00000007969403}
