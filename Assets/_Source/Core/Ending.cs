@@ -19,7 +19,7 @@ namespace Core
     {
         public event Action OnEnd;
 
-        [Header("Ending Stuff")] [SerializeField] private HingeJoint2D playerJoint;
+        [Header("Ending Stuff")] 
         [SerializeField] private GiantRockKiller giantRockKillerPrefab;
         [SerializeField] private List<GameObject> otherRocksToSpawn;
         [SerializeField] private Transform giantRockKillerSpawnPoint;
@@ -72,7 +72,7 @@ namespace Core
         private void ShakeCam()
         {
             _spawnedGiantRockKiller.OnFall -= ShakeCam;
-            playerJoint.enabled = false;
+            //playerJoint.enabled = false;
             impulseSource.GenerateImpulse(impulseStrength);
             ShowEndingAsync(_ctOnDestroy).Forget();
         }

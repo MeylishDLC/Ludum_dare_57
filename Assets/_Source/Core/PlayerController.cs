@@ -37,11 +37,13 @@ namespace Core
             _rb = GetComponent<Rigidbody2D>();
             _joint = GetComponent<HingeJoint2D>();
             Rock.OnRockHitPlayer += Die;
+            GiantRockKiller.OnPlayerHit += CutOffRope;
         }
         private void OnDestroy()
         {
             _anchorController.OnEndReached -= DisableMovement;
             Rock.OnRockHitPlayer -= Die;
+            GiantRockKiller.OnPlayerHit -= CutOffRope;
         }
         private void Update() 
         {
@@ -57,11 +59,15 @@ namespace Core
         {
             DieAsync(_ctOnDestroy).Forget();
         }
-        private async UniTask DieAsync(CancellationToken token)
+        private void CutOffRope()
         {
-            await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeFall), cancellationToken: token);
             _joint.enabled = false;
             DisableMovement();
+        }
+        private async UniTask DieAsync(CancellationToken token)
+        {
+            await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeFall), cancellationToken: token); 
+            CutOffRope();
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeDeath), cancellationToken: token);
             OnPlayerDeath?.Invoke();
         }
