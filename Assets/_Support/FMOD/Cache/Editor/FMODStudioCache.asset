@@ -69,10 +69,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638796462570178845
+  lastModified: 638796566559888971
   FileSizes:
   - Name: Desktop
-    Value: 1570
+    Value: 1622
   Exists: 1
 --- !u!114 &-5388808636099637830
 MonoBehaviour:
@@ -101,6 +101,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5298964966841708516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Music/MenuMusic
+  m_EditorClassIdentifier: 
+  Path: event:/Music/MenuMusic
+  Guid:
+    Data1: 2142499743
+    Data2: 1157466685
+    Data3: 968913341
+    Data4: 1054164725
+  Banks:
+  - {fileID: -4922486998644108414}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 180035
 --- !u!114 &-4922486998644108414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,10 +143,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Music.bank
   Name: Music
   StudioPath: bank:/Music
-  lastModified: 638796433685236405
+  lastModified: 638796566593757846
   FileSizes:
   - Name: Desktop
-    Value: 233664
+    Value: 2345664
   Exists: 1
 --- !u!114 &-4427776591124742272
 MonoBehaviour:
@@ -190,7 +217,7 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638796462570168840
+  lastModified: 638796566559877541
   FileSizes:
   - Name: Desktop
     Value: 1340
@@ -356,12 +383,13 @@ MonoBehaviour:
   - {fileID: 8007908015101859067}
   - {fileID: -4427776591124742272}
   - {fileID: -7755260511723092331}
+  - {fileID: -5298964966841708516}
   EditorParameters: []
   MasterBanks:
   - {fileID: -3358591031886675195}
   StringsBanks:
   - {fileID: -5642893059214918298}
-  cacheTime: 638796488425821910
+  cacheTime: 638796566593757846
   cacheVersion: 131620
 --- !u!114 &5258096563459706532
 MonoBehaviour:

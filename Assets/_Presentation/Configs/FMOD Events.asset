@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MainMenuMusic>k__BackingField:
     Guid:
-      Data1: 0
-      Data2: 0
-      Data3: 0
-      Data4: 0
-    Path: 
+      Data1: 2142499743
+      Data2: 1157466685
+      Data3: 968913341
+      Data4: 1054164725
+    Path: event:/Music/MenuMusic
   <CaveAmbient>k__BackingField:
     Guid:
       Data1: -2063871899
