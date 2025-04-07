@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using Cysharp.Threading.Tasks;
+using RopeScript;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Zenject;
@@ -23,17 +24,25 @@ namespace Rocks
 
         private CancellationToken _ctOnDestroy;
         private RockSpawnUtility _rockSpawnUtility;
+        private AnchorController _anchorController;
 
         [Inject]
-        public void Initialize(RockSpawnUtility rockSpawnUtility)
+        public void Initialize(RockSpawnUtility rockSpawnUtility, AnchorController anchorController)
         {
             _rockSpawnUtility = rockSpawnUtility;
+            _anchorController = anchorController;
         }
         private void Start()
         {
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
             SpawnRocksAsync(_ctOnDestroy).Forget();
+            _anchorController.OnEndReached += SelfDestroy;
         }
+        private void OnDestroy()
+        {
+            _anchorController.OnEndReached -= SelfDestroy;
+        }
+        private void SelfDestroy() => Destroy(gameObject);
         private async UniTask SpawnRocksAsync(CancellationToken token)
         {
             try

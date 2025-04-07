@@ -51,16 +51,17 @@ namespace Core
             }
             HandleMovement();
         }
-        private void DisableMovement() => _canMove = false;
+        public void DisableMovement() => _canMove = false;
+        public void EnableMovement() => _canMove = true;
         private void Die()
         {
             DieAsync(_ctOnDestroy).Forget();
         }
         private async UniTask DieAsync(CancellationToken token)
         {
-            _col.enabled = false;
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeFall), cancellationToken: token);
             _joint.enabled = false;
+            DisableMovement();
             await UniTask.Delay(TimeSpan.FromSeconds(delayBeforeDeath), cancellationToken: token);
             OnPlayerDeath?.Invoke();
         }

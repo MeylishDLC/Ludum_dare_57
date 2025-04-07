@@ -15,10 +15,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 638794094295356324
+  lastModified: 638796343431759611
   FileSizes:
   - Name: Desktop
-    Value: 804
+    Value: 874
   Exists: 1
 --- !u!114 &-4922486998644108414
 MonoBehaviour:
@@ -55,10 +55,10 @@ MonoBehaviour:
   Path: LudumDare57/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638794094295346315
+  lastModified: 638796343431210573
   FileSizes:
   - Name: Desktop
-    Value: 1036
+    Value: 1340
   Exists: 1
 --- !u!114 &-666838489348372948
 MonoBehaviour:
@@ -103,5 +103,5 @@ MonoBehaviour:
   - {fileID: -3358591031886675195}
   StringsBanks:
   - {fileID: -5642893059214918298}
-  cacheTime: 638794094295406330
+  cacheTime: 638796343431759611
   cacheVersion: 131620

@@ -20,6 +20,13 @@ namespace QuickTimeEvents
         [SerializeField] private AnchorController anchorController;
 
         private CancellationToken _ctOnDestroy;
+        private PlayerController _playerController;
+
+        [Inject]
+        public void Initialize(PlayerController playerController)
+        {
+            _playerController = playerController;
+        }
         private void Start()
         {
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
@@ -31,6 +38,7 @@ namespace QuickTimeEvents
         }
         public override void StartQte()
         {
+            _playerController.DisableMovement();
             IsWorking = false;
         }
         private async UniTask BreakRandomlyAsync(CancellationToken token)
@@ -53,6 +61,7 @@ namespace QuickTimeEvents
         private void OnQTESuccess()
         {
             IsWorking = true;
+            _playerController.EnableMovement();
             anchorController.CanMoveDown = true;
         }
         

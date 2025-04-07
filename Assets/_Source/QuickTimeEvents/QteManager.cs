@@ -1,21 +1,32 @@
 ﻿using System;
 using System.Collections.Generic;
+using RopeScript;
 using UnityEngine;
+using Zenject;
 
 namespace QuickTimeEvents
 {
     public class QteManager: MonoBehaviour
     {
-        [SerializeField] private SerializedDictionary<BaseQte, QteHandler> qtePairs;
+        [SerializeField] public SerializedDictionary<BaseQte, QteHandler> qtePairs;
 
+        private AnchorController _anchorController;
+        [Inject]
+        public void Initialize(AnchorController anchorController)
+        {
+            _anchorController = anchorController;
+        }
         private void Start()
         {
+            _anchorController.OnEndReached += SelfDestroy;
             SubscribeOnEvents();
         }
         private void OnDestroy()
         {
             UnsubscribeOnEvents();
+            _anchorController.OnEndReached -= SelfDestroy;
         }
+        private void SelfDestroy() => Destroy(gameObject);
         private void UnsubscribeOnEvents()
         {
             foreach (var baseQte in qtePairs.Keys)
