@@ -19,6 +19,9 @@ namespace UI
         [SerializeField] private float fadeInTime;
         [SerializeField] private Button restartButton;
 
+        [Header("Scene")]
+        [SerializeField] private Transform triggersParent;
+        
         private PlayerController _player;
         private SceneController _sceneController;
         private CancellationToken _ctOnDestroy;
@@ -46,6 +49,7 @@ namespace UI
             await FadeDeathScreen(0, 0, _ctOnDestroy);
             await FadeDeathScreen(1, fadeInTime, _ctOnDestroy);
             restartButton.interactable = true;
+            CleanUp();
         }
         private UniTask FadeDeathScreen(float fadeValue, float duration, CancellationToken token)
         {
@@ -63,6 +67,12 @@ namespace UI
                 .ToUniTask(cancellationToken: token)));
 
             return UniTask.WhenAll(tasks);
+        }
+
+        private void CleanUp()
+        {
+            Destroy(triggersParent.gameObject);
+            Destroy(_player.gameObject);
         }
         private void Restart()
         {
