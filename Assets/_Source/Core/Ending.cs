@@ -27,7 +27,9 @@ namespace Core
         [SerializeField] private GiantRockKiller giantRockKillerPrefab;
         [SerializeField] private List<GameObject> otherRocksToSpawn;
         [SerializeField] private Transform giantRockKillerSpawnPoint;
+        [SerializeField] private GameObject radioAnimation;
         
+        [Header("Cameras")]
         [SerializeField] private CinemachineVirtualCamera mainCamera;
         [SerializeField] private CinemachineVirtualCamera bestieCamera;
         [SerializeField] private CinemachineImpulseSource impulseSource;
@@ -52,10 +54,10 @@ namespace Core
         }
         private void Start()
         {
+            radioAnimation.gameObject.SetActive(false);
             _ctOnDestroy = this.GetCancellationTokenOnDestroy();
             _mainCamPriority = mainCamera.Priority;
             _anchorController.OnEndReached += PlayCutscene;
-            //PlayCutscene();
         }
         private void PlayCutscene()
         {
@@ -65,6 +67,8 @@ namespace Core
         private async UniTask PlayCutsceneAsync(CancellationToken token)
         {
             bestieCamera.Priority = _mainCamPriority++;
+            
+            radioAnimation.gameObject.SetActive(true);
             _soundManager.PlayOneShot(_soundManager.FMODEvents.LastMessageSound);
             await UniTask.Delay(TimeSpan.FromSeconds(timeToListenLastWords), cancellationToken: token);
             
@@ -81,6 +85,7 @@ namespace Core
         private void ShakeCam()
         {
             _spawnedGiantRockKiller.OnFall -= ShakeCam;
+            radioAnimation.gameObject.SetActive(false);
             TurnOffLight();
             _soundManager.PlayOneShot(_soundManager.FMODEvents.GiantRockKillsPlayerSound);
             impulseSource.GenerateImpulse(impulseStrength);

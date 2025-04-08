@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Threading;
 using AudioSystem;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -15,7 +17,12 @@ namespace UI.Menu
         [SerializeField] private Button returnButton;
         [SerializeField] private RectTransform settingsScreen;
         
+        [Header("Screen")]
+        [SerializeField] private RectTransform startScreen;
+        [SerializeField] private float startScreenDuration;
+        
         private SoundManager _soundManager;
+        private CancellationToken _ctOnDestroy;
 
         [Inject]
         public void Initialize(SoundManager soundManager)
@@ -24,6 +31,7 @@ namespace UI.Menu
         }
         private void Start()
         {
+            _ctOnDestroy = this.GetCancellationTokenOnDestroy();
             startGameButton.onClick.AddListener(LoadGameScene);
             settingsButton.onClick.AddListener(OpenSettingsScreen);
             returnButton.onClick.AddListener(CloseSettingsScreen);
@@ -32,8 +40,7 @@ namespace UI.Menu
         }
         private void LoadGameScene()
         {
-            _soundManager.CleanUp();
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+            ShowStartScreen(_ctOnDestroy).Forget();
         }
         private void OpenSettingsScreen()
         {
@@ -42,6 +49,13 @@ namespace UI.Menu
         private void CloseSettingsScreen()
         {
             settingsScreen.gameObject.SetActive(false);
+        }
+        private async UniTask ShowStartScreen(CancellationToken token)
+        {
+            startScreen.gameObject.SetActive(true);
+            await UniTask.Delay(TimeSpan.FromSeconds(startScreenDuration), cancellationToken: token);
+            _soundManager.CleanUp();
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
     }
 }

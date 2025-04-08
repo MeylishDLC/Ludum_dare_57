@@ -8,6 +8,7 @@ using DG.Tweening;
 using RopeScript;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Zenject;
 
@@ -18,6 +19,7 @@ namespace UI
         [SerializeField] private Image endingScreen;
         [SerializeField] private float fadeInTime;
         [SerializeField] private Ending ending;
+        [SerializeField] private float reloadDelay;
 
         private CancellationToken _ctOnDestroy;
         
@@ -35,6 +37,8 @@ namespace UI
             endingScreen.gameObject.SetActive(true);
             await FadeScreen(0, 0, _ctOnDestroy);
             await FadeScreen(1, fadeInTime, _ctOnDestroy);
+            await UniTask.Delay(TimeSpan.FromSeconds(reloadDelay), cancellationToken: token);
+            SceneManager.LoadScene(0);
         }
         private UniTask FadeScreen(float fadeValue, float duration, CancellationToken token)
         {
